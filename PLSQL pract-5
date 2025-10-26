@@ -29,14 +29,14 @@ end;
 /
 
 Output:-
-SQL*Plus: Release 21.0.0.0.0 - Production on Fri Sep 26 02:27:36 2025
+SQL*Plus: Release 21.0.0.0.0 - Production on Sun Oct 26 02:27:36 2025
 Version 21.3.0.0.0
 
 Copyright (c) 1982, 2021, Oracle.  All rights reserved.
 
 Enter user-name: system
 Enter password:
-Last Successful login time: Fri Sep 26 2025 01:51:21 +05:30
+Last Successful login time: Sun Oct 26 2025 01:51:21 +05:30
 
 Connected to:
 Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
@@ -52,19 +52,19 @@ Table created.
 
 SQL>
 SQL>
-SQL> INSERT INTO s_mark VALUES ('bhakti', 12);
+SQL> INSERT INTO s_mark VALUES ('Aditi', 12);
 
 1 row created.
 
-SQL> INSERT INTO s_mark VALUES ('pranjal', 13);
+SQL> INSERT INTO s_mark VALUES ('Pranjal', 13);
 
 1 row created.
 
-SQL> INSERT INTO s_mark VALUES ('ankita', 10);
+SQL> INSERT INTO s_mark VALUES ('Neha', 10);
 
 1 row created.
 
-SQL> INSERT INTO s_mark VALUES ('poonam', 14);
+SQL> INSERT INTO s_mark VALUES ('Sakshi', 14);
 
 1 row created.
 
@@ -80,10 +80,10 @@ SQL> SELECT * FROM s_mark;
 
 ST_NAME              CLASS
 -------------------- ----------
-bhakti               12
-pranjal              13
-ankita               10
-poonam               14
+Aditi               12
+Pranjal              13
+Neha             10
+Sakshi        14
 
 SQL>
 SQL> CREATE TABLE result (
@@ -96,7 +96,7 @@ Table created.
 
 SQL>
 SQL>
-SQL> INSERT INTO result VALUES (101, 'bhakti', 1400);
+SQL> INSERT INTO result VALUES (101, 'Aditi', 1400);
 
 1 row created.
 
@@ -104,11 +104,12 @@ SQL> INSERT INTO result VALUES (102, 'pranjal', 950);
 
 1 row created.
 
-SQL> INSERT INTO result VALUES (103, 'ankita', 580);
+SQL> INSERT INTO result VALUES (103, 'Aarohi', 580);
 
 1 row created.
 
-SQL> INSERT INTO result VALUES (104, 'anushka', 767);
+SQL> INSERT INTO result VALUES (104, 'Hetal
+', 767);
 
 1 row created.
 
@@ -130,13 +131,13 @@ SQL> SELECT * FROM result;
 ---------- ------------------------------------------------------------
  TOTALMARK
 ----------
-       101 aditi
+       101 Aditi
       1000
 
-       102 pranjal
+       102 Pranjal
        800
 
-       103 Sakshi
+       103 Aarohi
        580
 
 
@@ -144,10 +145,10 @@ SQL> SELECT * FROM result;
 ---------- ------------------------------------------------------------
  TOTALMARK
 ----------
-       104 anushka
+       104 Hetal
        767
 
-       105 hetal
+       105 poonam
       1023
 
 
