@@ -1,0 +1,481 @@
+Please enter a MongoDB connection string (Default: mongodb://localhost/): collections;
+collections;
+Current Mongosh Log ID: 68ec8ecf2a349b65dfcebea3
+Connecting to:          mongodb://127.0.0.1:27017/collections%3B?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.5.8
+Using MongoDB:          8.2.0
+Using Mongosh:          2.5.8
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-10-03T16:02:33.628+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+collections;> use employee
+switched to db employee
+employee> db.emp_a3.find();
+[
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650ae0'),
+    ID: 1,
+    Experience_Years: 5,
+    Age: 28,
+    Gender: 'Female',
+    Salary: 250000
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650ae1'),
+    ID: 2,
+    Experience_Years: 1,
+    Age: 21,
+    Gender: 'Male',
+    Salary: 50000
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650ae2'),
+    ID: 3,
+    Experience_Years: 3,
+    Age: 23,
+    Gender: 'Female',
+    Salary: 170000
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650ae3'),
+    ID: 4,
+    Experience_Years: 2,
+    Age: 22,
+    Gender: 'Male',
+    Salary: 25000
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650ae4'),
+    ID: 5,
+    Experience_Years: 1,
+    Age: 17,
+    Gender: 'Male',
+    Salary: 10000
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650ae5'),
+    ID: 6,
+    Experience_Years: 25,
+    Age: 62,
+    Gender: 'Male',
+    Salary: 5001000
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650ae6'),
+    ID: 7,
+    Experience_Years: 19,
+    Age: 54,
+    Gender: 'Female',
+    Salary: 800000
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650ae7'),
+    ID: 8,
+    Experience_Years: 2,
+    Age: 21,
+    Gender: 'Female',
+    Salary: 9000
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650ae8'),
+    ID: 9,
+    Experience_Years: 10,
+    Age: 36,
+    Gender: 'Female',
+    Salary: 61500
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650ae9'),
+    ID: 10,
+    Experience_Years: 15,
+    Age: 54,
+    Gender: 'Female',
+    Salary: 650000
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650aea'),
+    ID: 11,
+    Experience_Years: 4,
+    Age: 26,
+    Gender: 'Female',
+    Salary: 250000
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650aeb'),
+    ID: 12,
+    Experience_Years: 6,
+    Age: 29,
+    Gender: 'Male',
+    Salary: 1400000
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650aec'),
+    ID: 13,
+    Experience_Years: 14,
+    Age: 39,
+    Gender: 'Male',
+    Salary: 6000050
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650aed'),
+    ID: 14,
+    Experience_Years: 11,
+    Age: 40,
+    Gender: 'Male',
+    Salary: 220100
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650aee'),
+    ID: 15,
+    Experience_Years: 2,
+    Age: 23,
+    Gender: 'Male',
+    Salary: 7500
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650aef'),
+    ID: 16,
+    Experience_Years: 4,
+    Age: 27,
+    Gender: 'Female',
+    Salary: 87000
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650af0'),
+    ID: 17,
+    Experience_Years: 10,
+    Age: 34,
+    Gender: 'Female',
+    Salary: 930000
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650af1'),
+    ID: 18,
+    Experience_Years: 15,
+    Age: 54,
+    Gender: 'Female',
+    Salary: 7900000
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650af2'),
+    ID: 19,
+    Experience_Years: 2,
+    Age: 21,
+    Gender: 'Male',
+    Salary: 15000
+  },
+  {
+    _id: ObjectId('68ec8eb2e7f9009c9c650af3'),
+    ID: 20,
+    Experience_Years: 10,
+    Age: 36,
+    Gender: 'Male',
+    Salary: 330000
+  }
+]
+Type "it" for more
+employee> var map=function(){emit(this.Gender,this.Salary)}
+
+employee> var reduce=function(Gender,Salary){return Array.sum(Salary)}
+
+employee> db.emp_a3.mapReduce(map,reduce,{out:'empsal'});
+DeprecationWarning: Collection.mapReduce() is deprecated. Use an aggregation instead.
+See https://mongodb.com/docs/manual/core/map-reduce for details.
+{ result: 'empsal', ok: 1 }
+employee> db.empsal.find();
+[
+  { _id: 'Female', value: 36988500 },
+  { _id: 'Male', value: 35081650 }
+]
+employee> db.bank.find()
+
+employee> db.bank.find()
+[
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b04'),
+    date: ISODate('2022-01-01T00:00:00.000Z'),
+    DrCr: 'Db',
+    amount: 10000,
+    balance: 473292.87,
+    mode: 'ATM',
+    Day: 1,
+    Month: 1,
+    Year: 2022,
+    Tday: 1
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b05'),
+    date: ISODate('2022-01-01T00:00:00.000Z'),
+    DrCr: 'Db',
+    amount: 10000,
+    balance: 463292.87,
+    mode: 'ATM',
+    Day: 1,
+    Month: 1,
+    Year: 2022,
+    Tday: 1
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b06'),
+    date: ISODate('2022-01-02T00:00:00.000Z'),
+    DrCr: 'Db',
+    amount: 930,
+    balance: 462362.87,
+    mode: 'UPI',
+    name: 'AYUBRAJE',
+    Day: 2,
+    Month: 1,
+    Year: 2022,
+    Tday: 2
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b07'),
+    date: ISODate('2022-01-07T00:00:00.000Z'),
+    DrCr: 'Db',
+    amount: 2000,
+    balance: 460362.87,
+    mode: 'UPI',
+    name: 'ABUTALAH',
+    Day: 7,
+    Month: 1,
+    Year: 2022,
+    Tday: 3
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b08'),
+    date: ISODate('2022-01-10T00:00:00.000Z'),
+    DrCr: 'Db',
+    amount: 1000,
+    balance: 459362.87,
+    mode: 'UPI',
+    name: 'AGRAWALB',
+    Day: 10,
+    Month: 1,
+    Year: 2022,
+    Tday: 4
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b09'),
+    date: ISODate('2022-01-10T00:00:00.000Z'),
+    DrCr: 'Db',
+    amount: 1800,
+    balance: 457562.87,
+    mode: 'UPI',
+    name: 'GOASELEC',
+    Day: 10,
+    Month: 1,
+    Year: 2022,
+    Tday: 4
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b0a'),
+    date: ISODate('2022-01-10T00:00:00.000Z'),
+    DrCr: 'Db',
+    amount: 5000,
+    balance: 452562.87,
+    mode: 'UPI',
+    name: 'GOASELEC',
+    Day: 10,
+    Month: 1,
+    Year: 2022,
+    Tday: 4
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b0b'),
+    date: ISODate('2022-01-10T00:00:00.000Z'),
+    DrCr: 'Db',
+    amount: 3000,
+    balance: 449562.87,
+    mode: 'UPI',
+    name: 'AGRAWALB',
+    Day: 10,
+    Month: 1,
+    Year: 2022,
+    Tday: 4
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b0c'),
+    date: ISODate('2022-01-10T00:00:00.000Z'),
+    DrCr: 'Cr',
+    amount: 2400,
+    balance: 451962.87,
+    mode: 'NEFT',
+    Day: 10,
+    Month: 1,
+    Year: 2022,
+    Tday: 4
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b0d'),
+    date: ISODate('2022-01-12T00:00:00.000Z'),
+    DrCr: 'Cr',
+    amount: 1,
+    balance: 451963.87,
+    mode: 'UPI',
+    name: 'NAFEESAB',
+    Day: 12,
+    Month: 1,
+    Year: 2022,
+    Tday: 5
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b0e'),
+    date: ISODate('2022-01-12T00:00:00.000Z'),
+    DrCr: 'Cr',
+    amount: 1000,
+    balance: 452963.87,
+    mode: 'UPI',
+    name: 'NAFEESAB',
+    Day: 12,
+    Month: 1,
+    Year: 2022,
+    Tday: 5
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b0f'),
+    date: ISODate('2022-01-12T00:00:00.000Z'),
+    DrCr: 'Db',
+    amount: 1000,
+    balance: 451963.87,
+    mode: 'UPI',
+    name: 'MAHAMMADH',
+    Day: 12,
+    Month: 1,
+    Year: 2022,
+    Tday: 5
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b10'),
+    date: ISODate('2022-01-12T00:00:00.000Z'),
+    DrCr: 'Db',
+    amount: 275,
+    balance: 451688.87,
+    mode: 'UPI',
+    name: 'PHONEPE',
+    Day: 12,
+    Month: 1,
+    Year: 2022,
+    Tday: 5
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b11'),
+    date: ISODate('2022-01-12T00:00:00.000Z'),
+    DrCr: 'Db',
+    amount: 85,
+    balance: 451603.87,
+    mode: 'UPI',
+    name: 'PHONEPE',
+    Day: 12,
+    Month: 1,
+    Year: 2022,
+    Tday: 5
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b12'),
+    date: ISODate('2022-01-13T00:00:00.000Z'),
+    DrCr: 'Db',
+    amount: 563,
+    balance: 451040.87,
+    mode: 'UPI',
+    name: 'FLIPKART',
+    Day: 13,
+    Month: 1,
+    Year: 2022,
+    Tday: 6
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b13'),
+    date: ISODate('2022-01-14T00:00:00.000Z'),
+    DrCr: 'Db',
+    amount: 7000,
+    balance: 444040.87,
+    mode: 'UPI',
+    name: 'BUDESAHEB',
+    Day: 14,
+    Month: 1,
+    Year: 2022,
+    Tday: 7
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b14'),
+    date: ISODate('2022-01-22T00:00:00.000Z'),
+    DrCr: 'Db',
+    amount: 189,
+    balance: 443851.87,
+    mode: 'UPI',
+    name: 'FLIPKART',
+    Day: 22,
+    Month: 1,
+    Year: 2022,
+    Tday: 8
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b15'),
+    date: ISODate('2022-01-25T00:00:00.000Z'),
+    DrCr: 'Cr',
+    amount: 7.09,
+    balance: 443858.96,
+    mode: 'ECS',
+    Day: 25,
+    Month: 1,
+    Year: 2022,
+    Tday: 9
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b16'),
+    date: ISODate('2022-01-29T00:00:00.000Z'),
+    DrCr: 'Cr',
+    amount: 2400,
+    balance: 446258.96,
+    mode: 'NEFT',
+    Day: 29,
+    Month: 1,
+    Year: 2022,
+    Tday: 10
+  },
+  {
+    _id: ObjectId('68ec8f97e7f9009c9c650b17'),
+    date: ISODate('2022-01-29T00:00:00.000Z'),
+    DrCr: 'Db',
+    amount: 142,
+    balance: 446116.96,
+    mode: 'DEBIT CARD ANNUAL',
+    Day: 29,
+    Month: 1,
+    Year: 2022,
+    Tday: 10
+  }
+]
+Type "it" for more
+employee> db.bank1.find();
+
+employee> show dbs;
+Bank             240.00 KiB
+BankExample1     696.00 KiB
+DEMO1             40.00 KiB
+EmployeeExample  232.00 KiB
+admin             40.00 KiB
+college            8.00 KiB
+company           68.00 KiB
+config           100.00 KiB
+demo               4.20 MiB
+demoa3            72.00 KiB
+demobhakti        80.00 KiB
+demoexmple        68.00 KiB
+demoxyz          112.00 KiB
+emp_a3           892.00 KiB
+employee         136.00 KiB
+local             64.00 KiB
+test              56.00 KiB
+employee> var map1=function(){emit(this.job,this.balance)}
+
+employee> var reduce1=function(job,balance){return Array.sum(balance)}
+
+employee> db.bank.mapReduce(map1,reduce1,{out:'bankout'});
+{ result: 'bankout', ok: 1 }
+employee> db.bankout.find();
+[ { _id: null, value: 58979698.79000006 } ]
